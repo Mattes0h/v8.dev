@@ -31,49 +31,6 @@
 
   /* Body padding offset. */
   --offset: 2em;
-
-  /* Light mode */
-  --html-color: var(--black);
-  --html-background: var(--darkgray);
-  --main-color: var(--black);
-  --main-background: var(--white);
-  --footer-background: var(--lightestgray);
-  --main-and-footer-link-color: var(--darkblue);
-  --avatar-img-filter: none;
-  --icon-no-support-filter: grayscale(100%);
-  --note-color: var(--main-color);
-  --note-background: var(--lightyellow);
-  --tag-color: var(--black);
-  --tag-background: var(--lightestgray);
-  --table-border: var(--lightestgray);
-  --logo-hover-background: var(--lightestgray);
-  --alt-table-row-background: #EEE;
-}
-
-:root.dark {
-  --html-color: var(--nearwhite);
-  --html-background: var(--black);
-  --main-color:var(--nearwhite);
-  --main-background: var(--darkestgray);
-  --footer-color: var(--nearwhite);
-  --footer-background: var(--darkgray);
-  --main-and-footer-link-color: var(--yellow);
-  --avatar-img-filter: grayscale(50%);
-  --icon-no-support-filter: brightness(0.5) grayscale(100%);
-  --note-color: var(--darkestgray);
-  --note-background: var(--yellow);
-  --tag-color: var(--nearwhite);
-  --tag-background: var(--darkgray);
-  --table-border: var(--lightgray);
-  --logo-hover-background: var(--darkgray);
-  --alt-table-row-background: #111;
-
-  -webkit-font-smoothing: antialiased;
-}
-
-:root.dark figure img[src*=".png"]:not(.no-darkening),
-:root.dark figure img[src*=".svg"]:not(.no-darkening) {
-  filter: invert(0.862745) hue-rotate(180deg);
 }
 
 * {
@@ -325,9 +282,13 @@ figure {
   padding: 0;
   text-align: center;
 }
-figure img {
+figure img,
+figure video {
   display: block;
   margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 figure a {
   border-bottom: 0;
@@ -409,11 +370,6 @@ main .meta {
   background: var(--tag-background);
   color: var(--tag-color);
 }
-img,
-video {
-  height: auto;
-  max-width: 100%;
-}
 @supports (aspect-ratio: attr(width) / 1) {
   /* https://drafts.csswg.org/css-sizing-4/#example-2476aa5b */
   iframe {
@@ -445,12 +401,22 @@ video {
   }
 }
 
-.language-grammar {
+.language-grammar .production-name {
   font-style: italic;
 }
-
-.language-grammar b {
-  font-style: normal;
+.language-grammar .production-params,
+.language-grammar .keyword {
+  font-size: smaller;
+  vertical-align: sub;
+}
+.language-grammar .production-params {
+  padding-left: 2px;
+}
+.language-grammar .keyword {
+  margin-left: -1ch;
+}
+.language-grammar .literal {
+  font-weight: bold;
 }
 
 dark-mode-toggle {
